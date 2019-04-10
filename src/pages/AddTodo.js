@@ -2,14 +2,25 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class AddTodo extends Component {
+
+    state = {
+        title: '',
+    }
+
+    inputHandler = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value,
+        });
+    }
+
     render() {
         return (
             <div>
                 <form onSubmit={this.submitHandler}>
-                
+
                     <div className="form-input-field">
                         <label htmlFor="form-title">Title:</label>
-                        <input type="text" id="form-title" />
+                        <input name="title" value={this.state.title} onChange={e => this.inputHandler(e)} type="text" id="form-title" />
                     </div>
 
                     <div className="form-input-field">
@@ -21,6 +32,7 @@ class AddTodo extends Component {
             </div>
         );
     }
+
 }
 
 export default AddTodo;

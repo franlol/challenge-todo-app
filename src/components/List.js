@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 import todoService from '../services/todo-service';
+import ToDos from '../components/ToDos';
 
 class List extends Component {
 
@@ -21,13 +22,13 @@ class List extends Component {
         this.setState({
             list: response.data,
         });
-        
+
     }
 
     renderList = () => {
         const { list } = this.state;
 
-        return list.map((todo, i) => <div key={i}>{todo.title}</div>)
+        return list.map((todo, i) => <ToDos key={i} todo={todo} />)
     }
 
     render() {

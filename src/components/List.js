@@ -8,48 +8,50 @@ import AddTodo from '../components/AddTodo';
 class List extends Component {
 
     state = {
-        list: [{
-            title: "item 1"
-        }, {
-            title: "item 2"
-        }],
+        list: []
     }
 
     componentDidMount = async () => {
-        const response = await todoService.get();
+        this.updateList();
+    }
 
-        this.setState({
-            list: response.data,
-        });
+    updateList = async () => {
+        try {
+            const response = await todoService.get();
 
+            this.setState({
+                list: response.data,
+            });
+        } catch (error) {
+            // TODO REDIRECT NoMatch
+        }
     }
 
     renderList = () => {
         const { list } = this.state;
+        console.log(this.state)
         return list.map((todo, i) => <ToDos key={i} todo={todo} todoDelete={this.todoDelete} />);
     }
 
     todoAdd = async (todo) => {
         try {
             const response = await todoService.add(todo)
-            const data = { title: response.data.title, description: response.data.body };
+            const data = { _id: response.data._id, title: response.data.title, body: response.data.body };
 
             this.setState({
-                list: [...this.state.list, data]
-            })
+                list: [...this.state.list, data],
+            });
         } catch (error) {
-
+            // TODO REDIRECT NoMatch
         }
     }
 
     todoDelete = async (id) => {
         try {
-            const response = await todoService.delete(id);
-            if (response.data) {
-                console.log(response)
-            }
+            await todoService.delete(id);
+            this.updateList();
         } catch (err) {
-            
+            // TODO REDIRECT NoMatch
         }
     }
 
@@ -59,7 +61,7 @@ class List extends Component {
             <div>
                 {this.renderList()}
                 <hr />
-                <AddTodo todoAdd={this.todoAdd} todoDelete={this.todoDelete}/>
+                <AddTodo todoAdd={this.todoAdd} todoDelete={this.todoDelete} />
             </div>
         );
     }

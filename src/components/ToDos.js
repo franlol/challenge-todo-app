@@ -2,15 +2,6 @@ import React, { Component } from 'react';
 
 class ToDos extends Component {
 
-    state = {
-        isDone: false,
-        isLoaded: false
-    }
-
-    componentDidMount = () => {
-        this.setState({ isLoaded: true });
-    }
-
     deleteHandler = (_id) => {
         const { todoDelete } = this.props;
         todoDelete(_id);

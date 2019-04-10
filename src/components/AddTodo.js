@@ -5,7 +5,7 @@ class AddTodo extends Component {
 
     state = {
         title: '',
-        description: '',
+        body: '',
     }
 
     inputHandler = (e) => {
@@ -20,7 +20,7 @@ class AddTodo extends Component {
 
         const todo = {
             title: this.state.title,
-            description: this.state.description,
+            body: this.state.body,
         }
 
         todoAdd(todo);        
@@ -38,8 +38,8 @@ class AddTodo extends Component {
                     </div>
 
                     <div className="form-input-field">
-                        <label htmlFor="form-description">Description:</label>
-                        <input name="description" value={this.state.description} onChange={e => this.inputHandler(e)} type="text" id="form-description" />
+                        <label htmlFor="form-body">Descrition:</label>
+                        <input name="body" value={this.state.body} onChange={e => this.inputHandler(e)} type="text" id="form-body" />
                     </div>
 
                     <div className="form-input-field">

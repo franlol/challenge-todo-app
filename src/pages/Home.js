@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import List from '../components/List';
 
+import './home.css';
+
 class Home extends Component {
     render() {
         return (

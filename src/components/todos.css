@@ -1,0 +1,22 @@
+.todos-container {
+    display: flex;
+    justify-content: space-between;
+
+    border-left: 3px solid crimson;
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.todos-titles h2, h4 {
+    margin: 0;
+}
+
+.todos-titles h4 {
+    color: #57606f;
+}
+
+.todos-delete {
+    border: 0px solid red;
+    background: crimson;
+    color: white;
+}

@@ -5,6 +5,8 @@ import todoService from '../services/todo-service';
 import ToDos from '../components/ToDos';
 import AddTodo from '../components/AddTodo';
 
+import './list.css'
+
 class List extends Component {
 
     state = {
@@ -58,7 +60,7 @@ class List extends Component {
     render() {
 
         return (
-            <div>
+            <div className="list-container">
                 {this.renderList()}
                 <hr />
                 <AddTodo todoAdd={this.todoAdd} todoDelete={this.todoDelete} />

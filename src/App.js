@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router'
 import { BrowserRouter } from 'react-router-dom';
 
-import Home from './components/Home';
-import NoMatch from './components/NoMatch';
+import Home from './pages/Home';
+import NoMatch from './pages/NoMatch';
 
 
 import './App.css';

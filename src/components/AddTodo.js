@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
+import './addtodo.css';
 
 class AddTodo extends Component {
 
@@ -47,7 +48,6 @@ class AddTodo extends Component {
                     </div>
 
                 </form>
-                <Link to="/">Go back</Link>
             </div>
         );
     }

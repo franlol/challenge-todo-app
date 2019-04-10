@@ -10,7 +10,7 @@ class ToDoService {
     }
 
     async add(todo) {
-        const newToDo = await this.todo.post(`/api/v1/`, { todo });
+        const newToDo = await this.todo.post(`/api/v1/todos`, { title: todo.title, body: todo.description });
         return newToDo;
     }
 

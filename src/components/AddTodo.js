@@ -5,6 +5,7 @@ class AddTodo extends Component {
 
     state = {
         title: '',
+        description: '',
     }
 
     inputHandler = (e) => {
@@ -13,7 +14,20 @@ class AddTodo extends Component {
         });
     }
 
+    submitHandler = async (e) => {
+        e.preventDefault();
+        const { todoAdd } = this.props;
+
+        const todo = {
+            title: this.state.title,
+            description: this.state.description,
+        }
+
+        todoAdd(todo);        
+    }
+
     render() {
+
         return (
             <div>
                 <form onSubmit={this.submitHandler}>
@@ -24,7 +38,12 @@ class AddTodo extends Component {
                     </div>
 
                     <div className="form-input-field">
-                        <button type="submit">Add</button>
+                        <label htmlFor="form-description">Description:</label>
+                        <input name="description" value={this.state.description} onChange={e => this.inputHandler(e)} type="text" id="form-description" />
+                    </div>
+
+                    <div className="form-input-field">
+                        <button onClick={e => this.submitHandler(e)}>Add</button>
                     </div>
 
                 </form>

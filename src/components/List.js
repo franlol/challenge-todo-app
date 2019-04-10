@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
 import todoService from '../services/todo-service';
+
 import ToDos from '../components/ToDos';
+import AddTodo from '../components/AddTodo';
 
 class List extends Component {
 
@@ -15,8 +16,6 @@ class List extends Component {
     }
 
     componentDidMount = async () => {
-        // const { list } = this.state;
-
         const response = await todoService.get();
 
         this.setState({
@@ -31,12 +30,24 @@ class List extends Component {
         return list.map((todo, i) => <ToDos key={i} todo={todo} />)
     }
 
+    todoAdd = async (todo) => {
+        try {
+            
+        } catch (error) {
+            
+        }
+        const response = await todoService.add(todo)
+        console.log(response)
+    }
+
     render() {
 
         return (
             <div>
-                <Link to="/add">Add</Link>
-                {/* {this.renderList()} */}
+
+                {this.renderList()}
+                <hr/>
+                <AddTodo todoAdd={this.todoAdd} />
             </div>
         );
     }

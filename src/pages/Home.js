@@ -6,7 +6,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <h1>My Todo List</h1>
+                <h1>My task list:</h1>
                 <List />
             </div>
         );

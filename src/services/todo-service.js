@@ -19,6 +19,11 @@ class ToDoService {
         return allTodos;
     }
 
+    async delete(id) {
+        const allTodos = await this.todo.delete(`/api/v1/todos/${id}`);
+        return allTodos;
+    }
+
 }
 
 const todoService = new ToDoService();

@@ -26,28 +26,40 @@ class List extends Component {
 
     renderList = () => {
         const { list } = this.state;
-
-        return list.map((todo, i) => <ToDos key={i} todo={todo} />)
+        return list.map((todo, i) => <ToDos key={i} todo={todo} todoDelete={this.todoDelete} />);
     }
 
     todoAdd = async (todo) => {
         try {
-            
+            const response = await todoService.add(todo)
+            const data = { title: response.data.title, description: response.data.body };
+
+            this.setState({
+                list: [...this.state.list, data]
+            })
         } catch (error) {
+
+        }
+    }
+
+    todoDelete = async (id) => {
+        try {
+            const response = await todoService.delete(id);
+            if (response.data) {
+                console.log(response)
+            }
+        } catch (err) {
             
         }
-        const response = await todoService.add(todo)
-        console.log(response)
     }
 
     render() {
 
         return (
             <div>
-
                 {this.renderList()}
-                <hr/>
-                <AddTodo todoAdd={this.todoAdd} />
+                <hr />
+                <AddTodo todoAdd={this.todoAdd} todoDelete={this.todoDelete}/>
             </div>
         );
     }

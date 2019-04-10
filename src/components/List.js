@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+import todoService from '../services/todo-service';
+
 class List extends Component {
 
     state = {
@@ -8,6 +11,17 @@ class List extends Component {
         }, {
             title: "item 2"
         }],
+    }
+
+    componentDidMount = async () => {
+        // const { list } = this.state;
+
+        const response = await todoService.get();
+
+        this.setState({
+            list: response.data,
+        });
+        
     }
 
     renderList = () => {
@@ -20,8 +34,8 @@ class List extends Component {
 
         return (
             <div>
-                <button>Add</button>
-                {this.renderList()}
+                <Link to="/add">Add</Link>
+                {/* {this.renderList()} */}
             </div>
         );
     }

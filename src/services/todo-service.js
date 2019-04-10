@@ -14,6 +14,11 @@ class ToDoService {
         return newToDo;
     }
 
+    async get() {
+        const allTodos = await this.todo.get(`/api/v1/todos`);
+        return allTodos;
+    }
+
 }
 
 const todoService = new ToDoService();
